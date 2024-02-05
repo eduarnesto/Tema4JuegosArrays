@@ -10,6 +10,7 @@ public class Cartas {
 	final static int TAMTABLERO = 6;
 	static String tablero[] = new String[TAMTABLERO];
 	static int tableroNumeros[] = new int[TAMTABLERO];
+	static int posicionesVolteadas[] = new int[TAMTABLERO];
 	static Random rand = new Random();
 
 	public Cartas(int posCarta1, int posCarta2) {
@@ -48,15 +49,23 @@ public class Cartas {
 	}
 
 	public static void cartaArriba(int carta) {
+		
 		tablero[carta] = Integer.toString(tableroNumeros[carta]);
 	}
 
 	public void parejas() {
 		if (tableroNumeros[posCarta1] != tableroNumeros[posCarta2]) {
+			/*for (int numero : posicionesVolteadas) {
+				if (numero==posCarta1) {
+					
+				}
+			}*/
 			tablero[posCarta1] = "[] ";
 			tablero[posCarta2] = "[] ";
 		} else {
-			parejasReveladas++;
+			parejasReveladas+=2;
+			posicionesVolteadas[parejasReveladas]=posCarta1;
+			posicionesVolteadas[parejasReveladas+1]=posCarta2;
 		}
 	}
 
